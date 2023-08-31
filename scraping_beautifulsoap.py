@@ -14,7 +14,7 @@ if response.status_code == 200:
     soup = BeautifulSoup(response.text, "html.parser")
 
     # Encontre os elementos HTML que contêm os títulos de notícias
-    headlines = soup.find_all("h3", class_="gs-c-promo-heading__title")
+    headlines = soup.find_all("h1", class_="info")
 
     #cria arquivo csv
     file = open('export_data.csv', 'w', newline='')
