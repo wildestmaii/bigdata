@@ -14,14 +14,12 @@ if response.status_code == 200:
     soup = BeautifulSoup(response.text, "html.parser")
 
     # Encontre os elementos HTML que contêm os títulos de notícias
-    caderno = soup.find_all(class_= "hat")
     headlines = soup.find_all("h1", class_="title")
 
     #cria arquivo csv
     file = open('export_data.csv', 'w', newline='')
     writer = csv.writer(file)
     headers = ['Noticias']
-    hat = [caderno]
     writer.writerow(headers)
 
     # Loop pelos elementos e imprimir os títulos
@@ -29,18 +27,6 @@ if response.status_code == 200:
         print(headline.text)
         #cada noticia
         noticia = [headline.text]
-
-        #salvar noticia no arquivo
-        file = open('export_data.csv', 'a', newline='', encoding='utf-8')
-        writer = csv.writer(file)
-        writer.writerow(noticia)
-        file.close()
-
-    # Loop pelos elementos e imprimir os cadernos
-    for hat in caderno:
-        print(caderno.text)
-        #cada noticia
-        hat = [caderno.text]
 
         #salvar noticia no arquivo
         file = open('export_data.csv', 'a', newline='', encoding='utf-8')
